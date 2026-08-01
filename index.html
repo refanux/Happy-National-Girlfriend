@@ -1,44 +1,158 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy National Girlfriend Day 🤍</title>
 
-<meta charset="UTF-8">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-<title>Happy National Girlfriend Day ❤️</title>
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
 
-<link rel="stylesheet" href="style.css">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="hearts"></div>
+    <!-- BACKGROUND EFFECTS -->
+    <div id="stars"></div>
+    <div id="hearts"></div>
+    <div id="particles"></div>
 
-<section class="hero">
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 data-aos="zoom-in">Happy National Girlfriend Day 🤍</h1>
+            <p data-aos="fade-up" data-aos-delay="200">To My Beautiful Girlfriend, Linara</p>
+        </div>
+    </header>
 
-<h1>Happy National Girlfriend Day 🤍</h1>
+    <!-- MUSIC PLAYER -->
+<!-- MUSIC PLAYER WITH SYNCED LYRICS -->
+    <section class="music-section" data-aos="fade-up">
+        <div class="music-card">
+            <img class="cover" src="assets/WhatsApp Image 2026-08-01 at 12.28.35.jpeg" alt="Music Cover">
+            <div class="music-info">
 
-<h2>Ara</h2>
+                <div class="song-details">
+                    <h2>Shape Of My Heart</h2>
+                    <h4>Backstreet Boys</h4>
+                </div>
 
-<p>
-Terima kasih sudah hadir di hidup aku.
-Terima kasih sudah menjadi alasan aku tersenyum setiap hari.
-</p>
+                <!-- CONTAINER LIRIK BERJALAN (KARAOKE) -->
+                <div class="lyrics-container" id="lyricsContainer">
+                    <div class="lyrics-wrapper" id="lyricsWrapper">
+                        <!-- Lirik akan dirender secara otomatis lewat JavaScript -->
+                    </div>
+                </div>
 
-<button id="openBtn">Buka Pesan</button>
+                <div class="progress" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
 
-</section>
+                <div class="controls">
+                    <button id="prevBtn" title="Previous"><i class="fa-solid fa-backward"></i></button>
+                    <button id="playBtn" title="Play/Pause"><i class="fa-solid fa-play" id="playIcon"></i></button>
+                    <button id="nextBtn" title="Next"><i class="fa-solid fa-forward"></i></button>
+                </div>
 
-<div class="letter hidden">
+                <audio id="music">
+                    <source src="assets/SpotiDown.App - Shape of My Heart - Backstreet Boys.mp3" type="audio/mp3">
+                </audio>
 
-<h2>💌 Untuk Kamu</h2>
+            </div>
+        </div>
+    </section>
 
-<p id="typing"></p>
 
-</div>
+    <!-- MEMORY GALLERY -->
+    <section class="gallery">
+        <h2 data-aos="fade-down">📸 Moments I Always Keep</h2>
+        <div class="gallery-grid">
+            <div class="photo" data-aos="zoom-in"><img src="assets/WhatsApp Image 2026-08-01 at 12.26.58.jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="100"><img src="assets/WhatsApp Image 2026-08-01 at 12.26.58.jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="300"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.04.jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="400"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.06 (1).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="500"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.06.jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="500"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (1).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="500"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (2).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="500"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (3).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (4).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (5).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07 (6).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.27.07.jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.28.35 (1).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.28.35 (2).jpeg" alt=""></div>
+            <div class="photo" data-aos="zoom-in" data-aos-delay="200"><img src="assets/WhatsApp Image 2026-08-01 at 12.31.19.jpeg" alt=""></div>
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <!-- LETTER BUTTON -->
+    <section class="letter-section" data-aos="zoom-in">
+        <button id="openLetter" class="letter-btn">
+            <i class="fa-solid fa-envelope-open-heart"></i> Buka Surat Cinta
+        </button>
+    </section>
 
+    <!-- LETTER POPUP -->
+    <div id="popup" class="popup">
+        <div class="popup-card">
+            <button id="closePopup" class="close-btn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flower-top left">🌹</div>
+            <div class="flower-top right">🌹</div>
+
+            <h2>💌 Surat Untukmu</h2>
+            <div class="letter-text">
+                <p id="typing"></p>
+            </div>
+            <div class="popup-footer">
+                <span>With all my love 🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOVE MESSAGE STRIP (MARQUEE) -->
+    <section class="love-strip">
+        <div class="love-track">
+            <span>I Love You 🤍</span>
+            <span>Forever With You 💖</span>
+            <span>You Are My Favorite Person 🌸</span>
+            <span>Happy National Girlfriend Day ✨</span>
+            <span>Ara My Love 🌙</span>
+            <span>I Love You 🤍</span>
+            <span>Forever With You 💖</span>
+            <span>You Are My Favorite Person 🌸</span>
+            <span>Happy National Girlfriend Day ✨</span>
+            <span>Ara My Love 🌙</span>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" data-aos="fade-up">
+        <div class="footer-hearts">🤍 💖 🌸 💖 🤍</div>
+        <p>You're Always Close To My Heart, Ara. Ara</p>
+        <small>Happy National Girlfriend Day 2026 ✨</small>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
