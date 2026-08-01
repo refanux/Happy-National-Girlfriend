@@ -1,136 +1,573 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI;
+/* =========================================================
+   GLOBAL STYLES & VARIABLES
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-
-background:linear-gradient(135deg,#ffdde1,#ee9ca7);
-
-height:100vh;
-
-overflow:hidden;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
+:root {
+    --pink: #ff6ba8;
+    --pink-light: #ff9cc4;
+    --white: #ffffff;
+    --dark: #08111f;
+    --dark2: #111827;
+    --glass: rgba(255, 255, 255, 0.08);
 }
 
-.hero{
-
-text-align:center;
-
-color:white;
-
-width:80%;
-
+html {
+    scroll-behavior: smooth;
 }
 
-h1{
-
-font-size:55px;
-
-margin-bottom:10px;
-
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at top,
+        #ffeef7 0%,
+        #ffdceb 30%,
+        #ffcfe5 60%,
+        #ffedf5 100%);
+    color: #4b3046;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-h2{
-
-font-size:40px;
-
-margin-bottom:20px;
-
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--pink);
+    border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+    background: #111;
 }
 
-p{
+/* =========================================================
+   BACKGROUND ANIMATIONS
+========================================================= */
+#stars {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -5;
+    background-image:
+        radial-gradient(rgba(255,255,255,.95) 1px, transparent 1px),
+        radial-gradient(rgba(255,182,193,.6) 1px, transparent 1px),
+        radial-gradient(rgba(255,240,245,.8) 2px, transparent 2px);
 
-font-size:20px;
+    background-size:
+        80px 80px,
+        120px 120px,
+        200px 200px;
 
-line-height:1.7;
+    opacity: .6;
 
+    animation: starsMove 120s linear infinite;
 }
 
-button{
-
-margin-top:30px;
-
-padding:15px 35px;
-
-border:none;
-
-border-radius:40px;
-
-background:white;
-
-color:#ff4d88;
-
-font-size:18px;
-
-cursor:pointer;
-
-transition:.3s;
-
+@keyframes starsMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(-300px); }
 }
 
-button:hover{
 
-transform:scale(1.1);
-
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero {
+    padding: 90px 20px 40px;
+    text-align: center;
+    position: relative;
+    transition: opacity 0.3s ease;
 }
 
-.letter{
-
-position:absolute;
-
-background:white;
-
-padding:40px;
-
-width:700px;
-
-border-radius:20px;
-
-box-shadow:0 0 30px rgba(0,0,0,.2);
-
-color:#555;
-
+.hero::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:450px;
+    height:450px;
+    background:radial-gradient(circle,
+        rgba(255,182,193,.45),
+        rgba(255,192,203,.15),
+        transparent 70%);
+    filter:blur(40px);
+    z-index:-1;
 }
 
-.hidden{
+.hero h1{
+    font-family:'Great Vibes',cursive;
+    font-size:64px;
+    font-weight:400;
+    color:#d63384;
 
-display:none;
-
+    text-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 20px rgba(255,182,193,.8);
 }
 
-.heart{
-
-position:absolute;
-
-color:white;
-
-font-size:25px;
-
-animation:fall linear forwards;
-
+.hero p{
+    margin-top:10px;
+    font-size:18px;
+    letter-spacing:2px;
+    color:#7b4c68;
+    font-weight:500;
 }
 
-@keyframes fall{
-
-0%{
-
-transform:translateY(-100px);
-
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+.music-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 
-100%{
+.music-card{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    width:750px;
+    max-width:95%;
+    padding:25px;
 
-transform:translateY(110vh);
+    border-radius:25px;
 
+    background:rgba(255,255,255,.45);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:
+        0 15px 40px rgba(255,170,200,.25);
 }
 
+.music-card:hover {
+    transform: translateY(-5px);
+}
+
+.cover {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+}
+
+.music-info {
+    flex: 1;
+}
+
+.song-wrapper{
+    height:75px;
+    overflow:hidden;
+    position:relative;
+    margin-bottom:20px;
+}
+
+.song-slide{
+    animation:songScroll 6s infinite;
+}
+
+.song-item{
+    height:75px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.song-item h2{
+    font-size:30px;
+    color:#d63384;
+    margin:0;
+}
+
+.song-item h4{
+    margin-top:5px;
+    color:#7b5d6d;
+    font-weight:500;
+}
+
+@keyframes songScroll{
+    0%,40%{
+        transform:translateY(0);
+    }
+    50%,90%{
+        transform:translateY(-75px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+
+.music-info h2 {
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.music-info h4 {
+    font-weight: 400;
+    color: #ffd9ea;
+    margin-bottom: 20px;
+}
+
+.progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff8dc2, #ff5e9f);
+    border-radius: 20px;
+    transition: width 0.1s linear;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+.controls button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.controls button:hover {
+    background: var(--pink);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+/* =========================================================
+   LYRICS SECTION
+========================================================= */
+.lyrics-section {
+    display: flex;
+    justify-content: center;
+    padding: 10px 20px 30px;
+}
+
+.lyrics-card {
+    width: 750px;
+    max-width: 95%;
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 15px 40px rgba(255, 170, 200, 0.25);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.lyrics-card:hover {
+    transform: translateY(-5px);
+}
+
+.lyrics-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #d63384;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.lyrics-content {
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 0 15px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #5c4055;
+    font-weight: 500;
+}
+
+/* Custom Scrollbar Khusus Area Lirik */
+.lyrics-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lyrics-content::-webkit-scrollbar-thumb {
+    background: var(--pink-light);
+    border-radius: 10px;
+}
+
+.lyrics-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+.gallery {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.gallery h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.photo{
+    border-radius:20px;
+    overflow:hidden;
+    height:250px;
+    cursor:pointer;
+
+    background:white;
+
+    border:2px solid rgba(255,180,210,.5);
+
+    box-shadow:
+        0 10px 25px rgba(255,170,200,.25);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.photo:hover img
+{
+    transform: scale(1.08);
+}
+
+/* =========================================================
+   LETTER SECTION & POPUP
+========================================================= */
+.letter-section {
+    text-align: center;
+    padding: 30px;
+}
+
+.letter-btn {
+    padding: 16px 36px;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #ff6ba8, #ff8dc2);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 107, 168, 0.4);
+    transition: 0.3s;
+}
+
+.letter-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(255, 107, 168, 0.6);
+}
+
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.popup.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-card{
+    background:rgba(255,250,252,.96);
+    color:#5c4055;
+    border-radius:25px;
+    padding:40px 30px;
+    border:1px solid rgba(255,180,210,.5);
+
+    box-shadow:
+        0 20px 60px rgba(255,170,200,.35);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none;
+    border: none;
+    color:#d63384;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.flower-top {
+    position: absolute;
+    top: -20px;
+    font-size: 30px;
+}
+.flower-top.left { left: 20px; }
+.flower-top.right { right: 20px; }
+
+.letter-text{
+    margin:25px 0;
+    min-height:200px;
+    text-align:left;
+    line-height:2;
+    font-size:17px;
+    color:#4f4f4f;
+    white-space:pre-line;
+}
+
+.popup-footer{
+    color:#d63384;
+    font-size:18px;
+    font-weight:600;
+}
+
+/* =========================================================
+   LOVE MARQUEE STRIP
+========================================================= */
+.love-strip {
+    background:linear-gradient(
+    90deg,
+    #ff89b4,
+    #ffb7d1,
+    #ff89b4
+    );
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+.love-track {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.love-track span {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 20px;
+    color: white;
+    text-shadow:0 2px 5px rgba(0,0,0,.2);
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#7d5571;
+}
+
+.footer-hearts {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.footer small{
+    color:#9d7187;
+}
+
+/* Responsif Mobile */
+@media (max-width: 600px) {
+    .hero h1 { font-size: 45px; }
+    .music-card { flex-direction: column; text-align: center; }
+    .controls { justify-content: center; }
+    .cover { width: 100%; height: 200px; }
+    .lyrics-card { padding: 18px 12px; }
+}
+
+/* =========================================================
+   IN-CARD SYNCED LYRICS
+========================================================= */
+.song-details h2 {
+    font-size: 24px;
+    color: #d63384;
+    margin: 0;
+}
+
+.song-details h4 {
+    font-size: 14px;
+    color: #7b5d6d;
+    margin-bottom: 10px;
+}
+
+.lyrics-container {
+    height: 90px; /* Menampilkan sekitar 2-3 baris */
+    overflow: hidden;
+    position: relative;
+    margin: 15px 0;
+    mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+.lyrics-wrapper {
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: center;
+}
+
+.lyric-line {
+    font-size: 14px;
+    line-height: 28px;
+    color: #8c687e;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Baris lirik yang sedang diputar */
+.lyric-line.active {
+    font-size: 16px;
+    font-weight: 700;
+    color: #d63384;
+    opacity: 1;
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(214, 51, 132, 0.3);
 }
